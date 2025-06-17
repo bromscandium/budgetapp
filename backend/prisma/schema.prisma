@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Receipt {
+  id            Int      @id @default(autoincrement())
+  title         String   @default("Etc.")
+  amount        Int      @default(0)
+  currencyId    Int      @default(1)
+  categoryId    Int      @default(1)
+  receiptTypeId Int
+  description   String?
+  date          DateTime @default(now())
+
+  currency    Currency    @relation(fields: [currencyId], references: [id])
+  category    Category    @relation(fields: [categoryId], references: [id])
+  receiptType ReceiptType @relation(fields: [receiptTypeId], references: [id])
+}
+
+model Settings {
+  id         Int    @id @default(autoincrement())
+  language   String @default("en")
+  themeId    Int    @default(1)
+  currencyId Int    @default(1)
+
+  currency Currency @relation(fields: [currencyId], references: [id])
+  theme    Theme    @relation(fields: [themeId], references: [id])
+}
+
+model Currency {
+  id    Int    @id @default(autoincrement())
+  title String
+
+  receipts Receipt[]
+  settings Settings[]
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  title String
+
+  receipts Receipt[]
+}
+
+model ReceiptType {
+  id       Int       @id @default(autoincrement())
+  title    String
+  receipts Receipt[]
+}
+
+model Theme {
+  id    Int    @id @default(autoincrement())
+  title String
+
+  settings Settings[]
+}
