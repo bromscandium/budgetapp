@@ -17,7 +17,6 @@ export const getUniqueCategory = (id: number) => {
     })
 }
 
-
 export const createCategory = (data: { title: string, }) => {
     return prisma.category.create({data})
 }
