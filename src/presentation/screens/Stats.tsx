@@ -5,7 +5,7 @@ export default function StatsScreen() {
     return (
         <View className="flex-1 justify-center items-center bg-white dark:bg-black">
             <Text className="text-2xl font-bold text-black dark:text-white">
-                Stats Screen 📊
+                Stats Screen
             </Text>
         </View>
     );
