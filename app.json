@@ -8,6 +8,7 @@
     "scheme": "budgetapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "entryPoint": "./index.tsx",
     "ios": {
       "supportsTablet": true
     },
@@ -18,13 +19,11 @@
       }
     },
     "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/icon.png"
+      "bundler": "metro"
     },
-    "plugins": [],
-    "experiments": {
-      "typedRoutes": true
-    }
+    "plugins": [
+      "expo-web-browser"
+    ],
+    "experiments": {}
   }
 }

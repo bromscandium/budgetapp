@@ -3,6 +3,7 @@ import React from "react";
 import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import "../global.css"
 
 import {store} from './state/store'
 import MainNavigator from "@/src/presentation/routes/routes";
