@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {Category} from '../../domain/models/category.model'
-import {env} from "@/backend/src/config/dotenv";
+import {dotenv} from "@/src/utils/env";
 
-const backendUrl: string = `https://localhost:${env.BACKEND_PORT}/api/category`;
+const backendUrl: string = `http://${dotenv.LOCAL_HOTSPOT_PC}:${dotenv.FRONTEND_PORT}/api/category`;
 
 export const getAllCategories = async (): Promise<Category[]> => {
     const res = await axios.get(backendUrl);

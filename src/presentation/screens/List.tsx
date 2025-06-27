@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {Text, ScrollView} from 'react-native';
+import AppHeader from "@/src/presentation/components/AppHeader";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 export default function ListScreen() {
     return (
-        <View className="flex-1 justify-center items-center bg-white dark:bg-black">
-            <Text className="text-2xl font-bold text-black dark:text-white">
-                List
-            </Text>
-        </View>
+        <SafeAreaView className="flex-1 bg-white dark:bg-dark-background">
+            <AppHeader />
+            <ScrollView className="px-6">
+                <Text className="text-2xl font-bold text-black dark:text-white">
+                    Lists
+                </Text>
+            </ScrollView>
+        </SafeAreaView>
     );
 }

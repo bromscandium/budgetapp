@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {typeReceipt} from '../domain/models/typeReceipt.model';
+import {typeReceipt} from '../../domain/models/typeReceipt.model';
 
 interface typeReceiptState {
     typeReceipt: typeReceipt[];

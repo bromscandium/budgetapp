@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import categoryReducer from './category.slice';
-import currencyReducer from './currency.slice';
-import receiptReducer from './receipt.slice';
-import settingsReducer from './settings.slice';
-import themeReducer from './theme.slice';
-import typeReceiptReducer from './typeReceipt.slice';
+import categoryReducer from './slice/category.slice';
+import currencyReducer from './slice/currency.slice';
+import receiptReducer from './slice/receipt.slice';
+import settingsReducer from './slice/settings.slice';
+import themeReducer from './slice/theme.slice';
+import typeReceiptReducer from './slice/typeReceipt.slice';
+import paymentTypeReducer from './slice/paymentType.slice';
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
         settings: settingsReducer,
         theme: themeReducer,
         typeReceipt: typeReceiptReducer,
+        paymentType: paymentTypeReducer,
     },
 });
 

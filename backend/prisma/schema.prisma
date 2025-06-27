@@ -14,12 +14,14 @@ model Receipt {
   currencyId    Int      @default(1)
   categoryId    Int      @default(1)
   receiptTypeId Int
+  paymentTypeId Int
   description   String?
   date          DateTime @default(now())
 
   currency    Currency    @relation(fields: [currencyId], references: [id])
   category    Category    @relation(fields: [categoryId], references: [id])
   receiptType ReceiptType @relation(fields: [receiptTypeId], references: [id])
+  PaymentType PaymentType @relation(fields: [paymentTypeId], references: [id])
 }
 
 model Settings {
@@ -35,9 +37,12 @@ model Settings {
 model Currency {
   id    Int    @id @default(autoincrement())
   title String
+  rateToEur Float
 
   receipts Receipt[]
   settings Settings[]
+
+  PaymentType PaymentType[]
 }
 
 model Category {
@@ -51,6 +56,15 @@ model ReceiptType {
   id       Int       @id @default(autoincrement())
   title    String
   receipts Receipt[]
+}
+
+model PaymentType {
+  id       Int @id @default(autoincrement())
+  title    String
+  currencyId Int
+
+  receipts Receipt[]
+  Currency Currency @relation(fields: [currencyId], references: [id])
 }
 
 model Theme {

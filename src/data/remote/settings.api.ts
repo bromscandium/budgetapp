@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Settings } from '../../domain/models/settings.model';
-import { env } from "@/backend/src/config/dotenv";
+import {dotenv} from "@/src/utils/env";
 
-const backendUrl = `https://localhost:${env.BACKEND_PORT}/api/settings`;
+const backendUrl: string = `http://${dotenv.LOCAL_HOTSPOT_PC}:${dotenv.FRONTEND_PORT}/api/settings`;
 
 export const getAllSettings = async (): Promise<Settings[]> => {
     const res = await axios.get(backendUrl);

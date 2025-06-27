@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Receipt } from '../../domain/models/receipt.model';
-import { env } from "@/backend/src/config/dotenv";
+import {dotenv} from "@/src/utils/env";
 
-const backendUrl = `https://localhost:${env.BACKEND_PORT}/api/receipt`;
+const backendUrl: string = `http://${dotenv.LOCAL_HOTSPOT_PC}:${dotenv.FRONTEND_PORT}/api/receipt`;
 
 export const getAllReceipts = async (): Promise<Receipt[]> => {
     const res = await axios.get(backendUrl);

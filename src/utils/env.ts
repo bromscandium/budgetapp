@@ -1,0 +1,6 @@
+export const dotenv = {
+    BACKEND_PORT: 8081,
+    FRONTEND_PORT:  4001,
+    LOCAL_HOTSPOT_PC: '192.168.137.1' ,
+    LOCAL_HOTSPOT_PHONE: '192.168.137.183'
+}

@@ -19,11 +19,13 @@ module.exports = {
                 accent: '#FF3366',
                 danger: '#DC2626',
                 success: '#22C55E',
+                panel: '#dfdfdf',
                 dark: {
                     background: '#0A0A0A',
                     card: '#1A1A1A',
                     text: '#F0F0F0',
                     muted: '#666666',
+                    panel: '#171717'
                 }
             },
             fontFamily: {

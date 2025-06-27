@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { env } from "@/backend/src/config/dotenv";
 import { Theme } from '../../domain/models/theme.model';
 import { typeReceipt } from '../../domain/models/typeReceipt.model';
 import { Currency } from '../../domain/models/currency.model';
 
-const backendUrl = `https://localhost:${env.BACKEND_PORT}/api/meta`;
+import {dotenv} from "@/src/utils/env";
+
+const backendUrl: string = `http://${dotenv.LOCAL_HOTSPOT_PC}:${dotenv.FRONTEND_PORT}/api/meta`;
 
 export const getThemes = async (): Promise<Theme[]> => {
     const res = await axios.get(`${backendUrl}/theme`);

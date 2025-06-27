@@ -1,5 +1,6 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Receipt} from '../domain/models/receipt.model';
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {Receipt} from '../../domain/models/receipt.model';
+import {getAllReceipts} from '@/src/data/remote/receipt.api';
 
 interface ReceiptState {
     receipts: Receipt[];
@@ -9,11 +10,20 @@ const initialState: ReceiptState = {
     receipts: [],
 };
 
+export const fetchReceiptsFromApi = createAsyncThunk<Receipt[]>(
+    'receipt/fetchAll',
+    async () => {
+        const data = await getAllReceipts();
+        return data;
+    }
+);
+
+
 const receiptSlice = createSlice({
     name: 'receipt',
     initialState,
     reducers: {
-        fetchReceipts(state, action: PayloadAction<Receipt[]>) {
+        setReceipts(state, action: PayloadAction<Receipt[]>) {
             state.receipts = action.payload;
         },
         createNewReceipt(state, action: PayloadAction<Receipt>) {
@@ -30,8 +40,18 @@ const receiptSlice = createSlice({
             );
         },
     },
+    extraReducers: (builder) => {
+        builder.addCase(fetchReceiptsFromApi.fulfilled, (state, action) => {
+            state.receipts = action.payload;
+        });
+    },
 });
 
+export const {
+    setReceipts,
+    createNewReceipt,
+    updateReceipt,
+    deleteReceipt,
+} = receiptSlice.actions;
 
-export const {fetchReceipts, createNewReceipt, updateReceipt, deleteReceipt} = receiptSlice.actions;
 export default receiptSlice.reducer;

@@ -10,7 +10,7 @@ import {store} from './state/store'
 import MainNavigator from "@/src/presentation/routes/routes";
 
 const Root = () => {
-    const [fontsLoaded] = useFonts({
+    useFonts({
         'SourceSans3-Regular': require('./assets/fonts/SourceSans3-Regular.ttf'),
         'SourceSans3-Bold': require('./assets/fonts/SourceSans3-Bold.ttf'),
         'SourceSans3-SemiBold': require('./assets/fonts/SourceSans3-SemiBold.ttf'),
@@ -20,11 +20,6 @@ const Root = () => {
         'SourceSans3-ExtraBold': require('./assets/fonts/SourceSans3-ExtraBold.ttf'),
         'SourceSans3-Black': require('./assets/fonts/SourceSans3-Black.ttf'),
     });
-
-    if (!fontsLoaded) {
-        console.warn("Font is not loaded!")
-        return null;
-    }
 
     return (
         <Provider store={store}>

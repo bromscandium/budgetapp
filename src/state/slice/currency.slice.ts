@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Currency} from '../domain/models/currency.model';
+import {Currency} from '../../domain/models/currency.model';
 
 interface CurrencyState {
     currency: Currency[];
